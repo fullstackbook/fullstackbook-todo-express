@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -9,11 +10,11 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'fullstackbook-todo-express',
-  password: '',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 client.connect();
